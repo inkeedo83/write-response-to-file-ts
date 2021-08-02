@@ -20,18 +20,23 @@ export default async function main(): Promise<void> {
   const args = yargs.options({
     outputFileName: {
       type: 'string',
-      alias: 'o',
-      default: 'out'
+      alias: 'o'
     },
-    projectIds: { type: 'array', alias: 'p', default: [] }
+    projectIds: { type: 'array', alias: 'p' }
   }).argv;
 
   // read args
   const params = yargs.argv;
+  if (params.o === undefined || params.p === undefined) {
+    console.log(
+      'Error: incorrect input...\nuse: -o filename -p 1 2 3 <projects ids>...'
+    );
+    process.exit(1);
+  }
   const fileName = params.o as string;
   const inputIds = params.p as number[];
   const inputDataSpinner = spinner(
-    `your input params are:\n  - output file nameis: ${fileName}.json\n  - projects' Ids to save: ${
+    `your input params are:\n  - output file name is: ${fileName}.json\n  - projects' Ids to save: ${
       inputIds.length > 0 ? inputIds : 'all'
     }`
   );
