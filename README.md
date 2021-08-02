@@ -13,11 +13,11 @@ $ npm install
 
 ```bash
 # development
-$ npm run dev           // save all projects into out.json
+$ npm run dev -- -o filename -p // save all projects
 or
 $ npm run dev -- -o filename -p 1 2 3 <projects ids>...
-or
-$ npm run dev -- -o -p // save all projects into out.json
+
+
 
 
 # watch mode
